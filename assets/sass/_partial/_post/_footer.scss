@@ -2,22 +2,142 @@
 // Post footer
 // ==============================
 
+@mixin tags-style {
+  .color1 {
+    background: #0cc;
+    &:before {
+      border-right-color: #0cc;
+    }
+  }
+
+  .color2 {
+    background: #EE6252;
+    &:before {
+      border-right-color: #EE6252;
+    }
+  }
+
+  .color3 {
+    background: #4cae4c;
+    &:before {
+      border-right-color: #4cae4c;
+    }
+  }
+
+  .color4 {
+    background: #E23794;
+    &:before {
+      border-right-color:#E23794;
+    }
+
+  }
+
+  .color5 {
+    background: #f0ad4e;
+    &:before {
+      border-right-color:#f0ad4e;
+    }
+  }
+
+}
+
+@mixin tags-a {
+  a {
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: normal;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 5px 0 10px;
+    position: relative;
+    border-radius: 0 5px 5px 0;
+    margin: 5px 10px 5px 8px;
+    &:hover {
+      opacity: 0.8;
+      color: #fff;
+    }
+
+    &:before {
+      content: " ";
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      top: 0;
+      left: -18px;
+      border: 9px solid transparent;
+    }
+
+    &:after {
+      content: " ";
+      width: 4px;
+      height: 4px;
+      background-color:#fff;
+      border-radius: 4px;
+      box-shadow: 0px 0px 0px 1px rgba(0,0,0,.3);
+      position: absolute;
+      top: 7px;
+      left: 2px;
+    }
+  }
+}
+
 .post-footer {
   margin-top: $post-footer-margin-top;
   border-top: $post-footer-border-top;
   font-family: $global-serif-font-family;
 
+  .post-category {
+    @include tags-style;
+    display: inline-block;
+
+    @include tags-a
+  }
+
   .post-tags {
+    @include tags-style;
+    display: inline-block;
     padding: $post-tags-padding;
 
-    a {
-      margin-right: 5px;
-      color: $theme-color;
-      word-break: break-all;
+    //a {
+    //  margin-right: 5px;
+    //  color: $theme-color;
+    //  word-break: break-all;
+    //
+    //  &::before {
+    //    content: '#';
+    //  }
+    //}
 
-      &::before {
-        content: '#';
+    @include tags-a
+  }
+
+  .read-more {
+    //display: inline-block;
+    //float: right;
+    padding: $post-tags-padding;
+    margin-top: 5px;
+
+    .read-more-link {
+      color: $theme-color;
+      font-size: 1.1em;
+      font-family: $global-serif-font-family;
+
+      &:hover {
+        border-bottom: $post-readMore-border-bottom;
       }
+
+      //padding: 8px 20px;
+      //border: 0;
+      //border-radius: 0;
+      //background: $theme-color;
+      //box-shadow: 0 3px 10px rgba(0,0,0,0.06), 0 3px 10px rgba(0,0,0,0.13);
+      //-webkit-transition: all 0.1s;
+      //transition: all 0.1s;
+      //display: inline-block;
+      //line-height: 1em;
+      //cursor: pointer;
+      //color: #fff !important;
     }
   }
 
